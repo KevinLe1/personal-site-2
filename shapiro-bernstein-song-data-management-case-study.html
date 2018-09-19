@@ -16,16 +16,16 @@
 <body>
   <div class="navbar-fixed">
   <nav class="blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">KL</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">KL</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#teams">Teams</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#teams">Teams</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
       </ul>
       <ul id="nav-mobile" class="sidenav">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#teams">Teams</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#teams">Teams</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
       </ul>
   <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       
@@ -37,48 +37,200 @@
       <br><br>
       <h1 class="header blue-text">Shuffling Up Song Data Management</h1>
       <div class="row">
-        <h5 class="header col s12 light">How I helped Shapiro Bernstein efficiently manage a century-old database</h5>
+        <h5 class="header col s12 light">How I helped Shapiro Bernstein efficiently manage over a centuries' worth of data</h5>
       </div>
   </div>
 </div>
 
 <div class="container">
 
-    <h4 class = "header col s12 heavy">SUMMARY</h4>
+    <img class="responsive-img" src="img/song_manager/search_input.png">
+    
+    <h2 class = "header col s12 heavy">SUMMARY</h2>
 
-    <p>Shapiro Bernstein is a 100+ year old music publisher that handles the rights to songs ranging from "Ring of Fire" by Johnny Cash to "I Gotta Feeling" by the Black Eyed Peas. At the start of this project, their catalog was equally impressive as it was cumbersome. A single search alone could take several minutes -- a major obstacle in a business reliant on royalty payments.<br><br><strong>Here's how I improved the way Shapiro Bernstein manages song data.</strong></p>
+    <p>Shapiro Bernstein is a 100+ year old music publisher that handles the rights to songs ranging from "Ring of Fire" by Johnny Cash to "I Gotta Feeling" by the Black Eyed Peas. At the start of this project, their catalog was equally impressive as it was cumbersome. A single search alone could take several minutes -- a major obstacle in a business reliant on royalty payments.
+
+      <br><br><strong>Here's how I improved the way Shapiro Bernstein manages song data by implementing a custom and robust database system.</strong>
+
+    </p>
     
 </div>
 
 <div class="container">
 
-    <h4 class = "header col s12 heavy">CHALLENGE</h4>
+    <h2 class = "header col s12 heavy">CHALLENGE</h2>
 
-    <p>Most of the employees at Shapiro Bernstein are non-technical and their IT is outsourced. </p>
+    <p>As a music publisher, a Shapiro Bernstein's primary business revolves around managing a high quantity of songs which continues to increase. In managing song data there are two crucial elements: efficiency and trust. Shapiro Bernstein's song management was inefficient as it relied on Windows File Explorer, but they at least trusted that all of their song files were definitely located there. Shapiro Bernstein did not trust moving and maintaining their over century old catalog to external, often frivolous, third party softwares. Exacerbating all of this is Shapiro Bernstein's lack of technical expertise, with only one employee comfortable with SQL and most of their IT outsourced.
+
+      <br><br><strong>How could an efficient song data management system be created while maintaining approachability and trustworthiness for a non-technical userbase?</strong>
+    </p>
     
 </div>
 
 <div class="container">
 
-    <h4 class = "header col s12 heavy">INSIGHTS</h4>
+    <h2 class = "header col s12 heavy">INSIGHTS</h2>
 
-    <p>Most of the employees at Shapiro Bernstein are non-technical and their IT is outsourced. </p>
+    <p>For employees at Shapiro Bernstein, trust outweighs efficiency. After extensive interviews, I realized that employees at Shapiro Bernstein did not want a black box solution -- they wanted to fully understand the process and be able to easily make modifications at a root level. Shapiro Bernstein actually already had a much faster search engine in place. Everyone knew about it, but no one used it as it was missing numerous songs, and the process for adding new songs was a lengthy and manual process. So, I needed to make a system that no longer made trust and efficiency a zero-sum game. </p>
     
 </div>
 
 <div class="container">
 
-    <h4 class = "header col s12 heavy">SOLUTION</h4>
+    <h2 class = "header col s12 heavy">SOLUTION</h2>
 
-    <p>Most of the employees at Shapiro Bernstein are non-technical and their IT is outsourced. </p>
+    <p>I developed a file systems model database system with an accompanying software application written in Python. It supports instantaneous search across Shapiro Bernstein's database, various sync and sorting functionalities, file metadata editing, file sharing, and custom tag making. For this case study, I first explain why I used a file systems model and then break down my solution down in terms of the three main functions of the application -- Searching, Adding, and Syncing.</p>
+
+    <h3><em>File System Database</em></h3>
+
+    <img class = "responsive-img" src = "img/song_manager/mdrive_database.png">
+
+    <p>
+      Normally, I would implement a SQL or NoSQL database system. However, it was important that every employee and every incoming employee at Shapiro Bernstein could use and maintain the system easily. Shapiro Bernstein did have a SQL server, but only one person could use it. Every tech system Shapiro Bernstein had was also maintained by an external IT consulting group that was unreliable and of questionable quality (there were numerous moments during the development of this project where I would have to do IT work because their consultants couldn't figure it out). 
+
+      <br><br>Thus, I recognized that it was important that Shapiro Bernstein could feel total autonomy over their database as it is central to all of their operations. Their data, their domain.
+
+      <br><br>The file system model revolves around spreadsheets, which any employee can easily understand and manipulate. At the core of the model is an Excel workbook with multiple sheets. Each sheet represents a different attribute, which are referenced by a master sheet and tied together by unique identification keys. There is also a configuration sheet which allows users to modify the accompanying program modularly.
+
+      <br><br>This model takes advantage of Shapiro Bernstein's pre-existing IT infrastructure. All files already exist in a shared server across all employee computers, which means that changes done to a file syncs up for everyone else. Additionally, numerous security measures are already in place to protect these servers.
+
+      <br><br>I decided to go with a central Excel workbook -- referred to as the MDrive Database (for 'Music Drive Database') -- rather than multiple csv files for ease of use by employees at Shapiro Bernstein. This sheet essentially acted as a one-stop shop for viewing data and modifying song information. While there is an accompanying program, again it was important that employees could get as low-level as they desired. Additionally, I also realized that, when using text information alone, the Excel workbook would remain at a size that was still capable of being processed relatively quickly (certainly much faster than their previous system).</p>
+
+      <div class = "row">
+        <div class="col s12 m8">
+          <h6><strong>Back Up Files</strong></h6>
+          <img class = "responsive-img" src = "img/song_manager/back_ups.png">
+      </div>
+    </div>
+
+      <br>
+      <p>I also added two other directories of spreadsheets -- a Batch directory and a Backup directory. The Backup directory contains copies of the Excel workbook, and these can be made from the accompanying program. The Batch directory contains csv files which are sorted by date and labelled by user. Each of these csv files log desired user changes which can then be synced up to the MDrive Database and to actual file metadata in the MDrive (this is where all of Shapiro Bernstein's song mp3s, m4as, wavs, etc. are stored).
+      </p>
+
+      <div class = "row">
+      <div class="col s12 m6">
+        <h6><strong>Batch Directory Dates</strong></h6>
+        <img class = "responsive-img" src = "img/song_manager/batch_dates.png">
+      </div>
+
+      <div class="col s12 m6">
+        <h6><strong>Batch Directory Logs</strong></h6>
+        <img class = "responsive-img" src = "img/song_manager/batch_files.png">
+      </div>
+
+    </div>
+
+      <br><br>In data terms, this is known as a batch processing system, and is one method of tackling the issue of how to handle multiple users modifying a shared database simultaneously. In the context of this song database system, users select all desired csv files that they would like to import into the database, thus importing changes in one large 'batch' rather than in real-time.
+
+      <br><br>I decided against doing a real-time update method because I wanted to make every change as deliberate as possible for the user. As the program interfaces directly with their actual song metadata, it is vital that any information added is accurate. However, only employees would know if information is incorrect or not. This allows for the option of a human check (as anyone can open up a csv file). Additionally, as each file is labelled by user, if there are significant mistakes, it is easy to identify who is accountable.
+
+      <br><br>Overall, Shapiro Bernstein was extremely receptive to this model. It was a data model that they could finally understand and feel control over. 
+    </p>
+
+    <h3><em>Data Processing</em></h3>
+
+    <p>My goal with the accompanying program was to make it both robust and lightweight. A concern with many third party softwares that Shapiro Bernstein had was that there were too many bells and whistles which were distracting and diminished the user experience. Thus, I went for a system whose UI and UX had no frills.</p>
+
+    <h4><strong>Search</strong></h4>
+
+    <div class = "row">
+        <div class="col s12 m4">
+          <h6><strong>Search Input</strong></h6>
+          <img class = "responsive-img" src = "img/song_manager/search_input.png">
+      </div>
+      <div class="col s12 m8">
+          <h6><strong>Search Output</strong></h6>
+          <img class = "responsive-img" src = "img/song_manager/search_output.png">
+      </div>
+    </div>
+
+    <p>To design the search input menu, I worked with employees at Shapiro Bernstein to determine what attributes to include. Beyond ID3 attributes, I wanted to expand on Shapiro Bernstein's ability to work with attributes by adding attributes such as TOPIC and LYRICS which do not exist in ID3 data, but are still useful for Shapiro Bernstein. Again, this ties back to giving users at Shapiro Bernstein as much control and modularity as possible.
+
+    <br><br>
+    On the more technical side, searches became instantaneous. As stated earlier, searches at the time would take Shapiro Bernstein several minutes to run. To implement this, I read in all data from the MDrive Database at initialization and store it in pandas dataframes. Such dataframes can be traversed and manipulated very quickly and efficiently.
+
+    <br><br>
+    The search output consists of a table view of all input matches within the stored dataframes. When a user double clicks on any entry, two actions occur -- 1.) the Add menu will appear and 2.) the song file will start playing. A simple song player can be manipulated from the Add menu.
+
+    <div class = "row">
+        <div class="col s12 m3">
+          <h6><strong>Simple Song Player</strong></h6>
+          <img class = "responsive-img" src = "img/song_manager/song_player.png">
+      </div>
+    </div>
+
+    <br>Should a satisfactory song be found, users can easily transfer one or multiple files at once by highlighting row(s) in the search output and selecting 'Transfer Files.' Here, a temporary directory pop-up is created with copies of the selected songs. These songs can then simply be dragged and dropped to emails, Google Drive, Dropbox, etc. When a transfer is complete, the temporary directory is automatically deleted to save space.
+
+    <div class = "row">
+        <div class="col s12 m6">
+          <h6><strong>Temporary Directory for File Transfer</strong></h6>
+          <img class = "responsive-img" src = "img/song_manager/file_transfer.png">
+      </div>
+    </div>
+  </p>
+
+    <h4><strong>Add</strong></h4>
+
+   <div class = "row">
+        <div class="col s12 m6">
+          <h6><strong>Single Song Add Menu</strong></h6>
+          <img class = "responsive-img" src = "img/song_manager/add_menu.png">
+      </div>
+      <div class="col s12 m6">
+          <h6><strong>Multi Song Add Menu</strong></h6>
+          <img class = "responsive-img" src = "img/song_manager/batch_add_menu.png">
+      </div>
+    </div>
+
+    <p>As stated in the previous section, the Single Song Add menu appears when you double click on an entry in the search output. Every change committed through the Single Song Add menu is automatically added to a log file that is created at initialization. These log files are contained in the Batch directory and are the files used for the batch importing process. Again, I wanted to make adding as user-friendly as possible, thus the menu looks almost identical to the search menu for consistency and simplicity.
+
+    <br><br>
+    Sometimes, employees at Shapiro Bernstein need to add the same data to multiple songs at once (such as contact information). To do this, users simply need to highlight several entries in the Search Output and select 'Batch Add' (Batch referring to multiple in this case). Here, a blank menu appears, but changes applied here will be logged for every highlighted song. 
+
+     <br><br>Upon termination of the program, users are asked if they would like to keep their log files. This helps act as a check to ensure that only useful log files are added to the Batch directory.</p>
+
+    <h4><strong>Sync</strong></h4>
+
+    <div class = "row">
+      <div class="col s12 m8">
+          <h6><strong>Sync Menu</strong></h6>
+          <img class = "responsive-img" src = "img/song_manager/sync_menu.png">
+      </div>
+    </div>
+
+    <p>There are two different types of data that can be synced -- song file metadata and spreadsheet data. Song file metadata refers to the details that appear when a user views the properties of a song file. Such metadata is limited by the constraint of the file type (e.x. ID3).</p>
+
+    <div class = "row">
+        <div class="col s12 m4">
+          <h6><strong>Song File Metadata</strong></h6>
+          <img class = "responsive-img" src = "img/song_manager/metadata.png">
+      </div>
+      <div class="col s12 m8">
+          <h6><strong>Spreadsheet Data (from file in Batch Directory)</strong></h6>
+          <img class = "responsive-img" src = "img/song_manager/batch_log.png">
+      </div>
+    </div>
+
+    <p> Spreadsheet data refers to cell data that is added to the MDrive database in the File System Database. It includes all metadata and also custom tags specified by Shapiro Bernstein. In other words, atrributes are not limited solely to, for example, ID3 data.
+
+    <br><br>Both types of data are modified whenever a Batch Import is called from the Sync Menu. Here, a user is asked to specify files from the Batch directory. Each file contains a set of logged changes from specific users, which are then merged into the spreadsheet data. If any of the logged changes refer to specific song metadata (e.x. ID3 data), then the metadata for that song will be automatically updated. That way, changes happen at a root level too. This is especially useful for when Shapiro Bernstein needs to transfer songs to clients as clients can view this metadata.
+
+    <br><br>However, syncing is not limited to batch files. It is also possible to sync pre-existing metadata in the MDrive to the MDrive database. Additionally, as new files come in, the Sort Files function allows users to organize files and have the metadata from those files automatically sync up with the MDrive Database. This allows for ease of scalability as Shapiro Bernstein's catalog continues to expand.
+</p>
+
+
+
+    
     
 </div>
 
 <div class="container">
 
-    <h4 class = "header col s12 heavy">RESULTS</h4>
+    <h2 class = "header col s12 heavy">RESULTS</h2>
 
-    <p>Most of the employees at Shapiro Bernstein are non-technical and their IT is outsourced. </p>
+    <p>Ultimately, many changes occurred for Shapiro Bernstein. Searches went from taking minutes to being instantaneous. All searches became exhaustive -- Shapiro Bernstein could trust no data was missing because it was tied to their core data. Syncing data was no longer painful and could automatically keep up with Shapiro Bernstein's scale without having to rearrange all of Shapiro Bernstein's song files. Shapiro Bernstein could transfer more detailed files to clients efficiently. Employees could easily add vast amounts of data both to a database and to song metadata at the same time -- a functionality they never had previously. Shapiro Bernstein could now feel control over their database. Users could maintain a balance between automation and human deliberation.</li>
+
+    <p>Overall, Shapiro Bernstein now has a modular and approachable system that not only vastly improved the efficiency of their operations, but also added to their capabilities.</p>
     
 </div>
 
