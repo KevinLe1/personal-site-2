@@ -16,3 +16,11 @@
 .navbar-fixed{
 	z-index:999;
 }
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+  color: #1e88e5;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
+  color: #90caf9;
+}
