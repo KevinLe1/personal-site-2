@@ -1,26 +1,30 @@
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
-
-.icon-block {
-  padding: 0 15px;
-}
-.icon-block .material-icons {
-	font-size: inherit;
+*{
+	font-family: 'Nunito Sans', sans-serif;
+	font-weight: 100;
 }
 
-.navbar-fixed{
-	z-index:999;
+.navbar-nav > li{
+
+  padding-left:40px;
+  
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
-  color: #1e88e5;
+p {
+	
+	line-height: 1.6;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
-  color: #90caf9;
+.img-responsive {
+	width: 90%;
+	border-radius: 10px;
+	margin-bottom:18%;
 }
+
+@media screen and (max-width:600px) {
+	.img-responsive {
+		width:75%;
+		border-radius:10px;
+		margin-bottom:5%;
+	}
+}
+
